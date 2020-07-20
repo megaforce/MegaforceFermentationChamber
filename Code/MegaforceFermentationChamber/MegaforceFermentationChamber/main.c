@@ -8,12 +8,19 @@
 #include <avr/io.h>
 #include "MMINIT.h"
 #include "TimeHandler.h"
-static int x = 5;
+
+short days,temp;
+
 int main(void)
-{
+{	
+	short days = 0;
+	short hours = 0;
     init_IO();
 	init_TH();
+	LCD_Init();
+	startUp();
 	sei();
+	
     while (1) 
     {
 		
@@ -23,9 +30,4 @@ int main(void)
 ISR(TIMER1_COMPA_vect)
 {
 	LED1_Tgl();
-	x--;
-	if(x == 0){
-		disable_TH();
-		LED3_On();
-	}
 }

@@ -25,6 +25,7 @@
 #define BTN_A	4
 #define BTN_B	5
 
+
 void init_IO();
 void LED1_On();
 void LED2_On();
