@@ -7,6 +7,7 @@
 #include <util/delay.h>
 #include "GuiHandler.h"
 #include "MMINIT.h"
+#include "ADCHandler.h"
 
 
 void startUp()
@@ -42,13 +43,6 @@ void startUp()
 			_delay_ms(500);
 		}
 	
-	UG_FontSelect(&RFONT_16X26);
-	UG_SetForecolor(C_GREEN);
-	UG_SetBackcolor(C_BLACK);
-
-	UG_PutString(130,140,"READY");
-	UG_PutString(130,160,"FOR");
-	UG_PutString(130,180,"BEER!!");
 	
 }
 void mainScreenTime()
@@ -81,7 +75,7 @@ void mainScreenTime()
 	UG_PutString(35,185,text);
 	
 	while(1)
-	{	
+	{			
 		sprintf(text,"Days: %d",days);
 		UG_SetForecolor(C_WHITE);
 		UG_PutString(35,145,text);

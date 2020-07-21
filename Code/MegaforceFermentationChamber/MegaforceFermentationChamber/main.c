@@ -15,6 +15,7 @@ int main(void)
 	days = 0;
 	temp = 0;
     init_IO();
+	init_ADC();
 	startUp();
 	mainScreenTime();
 	mainScreenTemp();
@@ -33,7 +34,7 @@ int main(void)
 ISR(TIMER1_COMPA_vect)
 {
 	
-	if(days != 0)
+	if(days -1 != 0)
 		LED1_Tgl();
 	else
 	{
@@ -41,4 +42,9 @@ ISR(TIMER1_COMPA_vect)
 		main();
 	}
 		days --;		
+}
+
+ISR(ADC_vect)
+{
+	ADC_res = ADC;
 }

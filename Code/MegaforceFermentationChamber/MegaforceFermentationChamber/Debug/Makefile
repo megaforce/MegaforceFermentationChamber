@@ -37,6 +37,7 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../ADCHandler.c \
 ../GuiHandler.c \
 ../LCD_Ili9341.c \
 ../main.c \
@@ -53,6 +54,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+ADCHandler.o \
 GuiHandler.o \
 LCD_Ili9341.o \
 main.o \
@@ -62,6 +64,7 @@ TimeHandler.o \
 ugui.o
 
 OBJS_AS_ARGS +=  \
+ADCHandler.o \
 GuiHandler.o \
 LCD_Ili9341.o \
 main.o \
@@ -71,6 +74,7 @@ TimeHandler.o \
 ugui.o
 
 C_DEPS +=  \
+ADCHandler.d \
 GuiHandler.d \
 LCD_Ili9341.d \
 main.d \
@@ -80,6 +84,7 @@ TimeHandler.d \
 ugui.d
 
 C_DEPS_AS_ARGS +=  \
+ADCHandler.d \
 GuiHandler.d \
 LCD_Ili9341.d \
 main.d \
@@ -102,6 +107,13 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+./ADCHandler.o: .././ADCHandler.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328pb -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328pb" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 ./GuiHandler.o: .././GuiHandler.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
