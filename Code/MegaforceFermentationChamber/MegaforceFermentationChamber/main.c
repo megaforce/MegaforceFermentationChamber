@@ -8,18 +8,21 @@
 #include <avr/io.h>
 #include "MMINIT.h"
 #include "TimeHandler.h"
-
-short days,temp;
+#include "Globals.h"
 
 int main(void)
 {	
-	short days = 0;
-	short hours = 0;
+	days = 0;
+	temp = 0;
     init_IO();
-	init_TH();
-	LCD_Init();
 	startUp();
+	mainScreenTime();
+	mainScreenTemp();
+	fermentationScreen();
 	sei();
+	
+	
+	
 	
     while (1) 
     {
@@ -29,5 +32,13 @@ int main(void)
 
 ISR(TIMER1_COMPA_vect)
 {
-	LED1_Tgl();
+	
+	if(days != 0)
+		LED1_Tgl();
+	else
+	{
+		disable_TH();
+		main();
+	}
+		days --;		
 }

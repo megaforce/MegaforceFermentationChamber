@@ -9,12 +9,14 @@
 #include "ugui.h"
 #include "ugui_config.h"
 #include "config.h"
+#include "Globals.h"
  
 #ifndef GuiHandler_H_
 #define GuiHandler_H_
 
 void startUp();
-int mainScreen();
+void mainScreenTime();
+void mainScreenTemp();
 void fermentationScreen();
 
 #endif /* GuiHandler_H_ */
