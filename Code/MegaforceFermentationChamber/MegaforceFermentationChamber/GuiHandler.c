@@ -171,10 +171,7 @@ void mainScreenTemp()
 }
 
 void fermentationScreen()
-{
-	init_TH();
-	LCD_Init();
-	
+{	
 	char text[20];
 	
 	sprintf(text,"Days: %d",days);
@@ -184,6 +181,10 @@ void fermentationScreen()
 	sprintf(text,"Temp: %d",temp);
 	UG_SetForecolor(C_WHITE);
 	UG_PutString(35,185,text);
+	
+	sprintf(text,"Temp: %d",ADC_res);
+	UG_SetForecolor(C_WHITE);
+	UG_PutString(35,225,text);
 	
 	return;
 	

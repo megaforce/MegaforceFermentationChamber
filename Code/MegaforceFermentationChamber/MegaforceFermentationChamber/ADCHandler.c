@@ -10,21 +10,21 @@
 
 void init_ADC()
 {
-	ADMUX |= 0x40; //Sets voltage reference to AVCC and A0 as input
-	ADCSRA = (1 << ADEN); //Enables ADC
-	ADCSRA |= 0x07; // Sets pre-scaler to /128 
-	ADMUX = (0 << ADLAR); //Right adjustment to match the data register (LSB match)
-	DIDR0 |= 0XFE; //Disables all inputs except ADC0D
-	ADCSRA = (0 << ADATE); //Disables auto-trigger
-	ADCSRA = (1 << ADIE); //Enables interrupts 
+	ADMUX |= (1 << REFS0) | (0 << MUX0) | (0 << MUX1) | (0 << MUX2) | (0 << MUX3); //Select AVCC as reference and set ADC0 channel
+	ADCSRA |= (1 << ADEN) ; //Enable ADC
+	ADCSRA |= (1 << ADIE) ; //Enable ADC interrupt 
+	ADCSRA |= (1 << ADPS0) | (1 << ADPS1) | (1 << ADPS2); //Set prescaler to /128
+	DIDR0 |= (1 << ADC0D); //Enable ADC0
+	startConversion();
 }
 
 void startConversion()
 {
-	ADCSRA = (1 << ADSC); //Sets the ADC Start Conversion bit
+	ADCSRA |= (1 << ADSC); //Sets the ADC Start Conversion bit
 }
 
 void disable_ADC()
 {
-	
+	ADCSRA &= 0x7F;
+	DIDR0 &= 0xFE;
 }

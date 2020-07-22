@@ -11,6 +11,6 @@
 short days;
 short temp;
 
-float ADC_res;
+int ADC_res;
 
 #endif /* Globals_H_ */

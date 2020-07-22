@@ -15,15 +15,14 @@ int main(void)
 	days = 0;
 	temp = 0;
     init_IO();
-	init_ADC();
+	sei();
 	startUp();
 	mainScreenTime();
 	mainScreenTemp();
+	init_TH();
+	LCD_Init();
+	init_ADC();
 	fermentationScreen();
-	sei();
-	
-	
-	
 	
     while (1) 
     {
@@ -31,14 +30,15 @@ int main(void)
     }
 }
 
-ISR(TIMER1_COMPA_vect)
+ISR(TIMER3_COMPA_vect)
 {
 	
 	if(days -1 != 0)
-		LED1_Tgl();
+		fermentationScreen();
 	else
 	{
 		disable_TH();
+		disable_ADC();
 		main();
 	}
 		days --;		
@@ -47,4 +47,5 @@ ISR(TIMER1_COMPA_vect)
 ISR(ADC_vect)
 {
 	ADC_res = ADC;
+	startConversion();
 }
