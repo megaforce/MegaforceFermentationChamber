@@ -10,7 +10,7 @@
 
 void init_TH()
 {
-	//Timer3 is in charge of keeping track of time remaining for the fermentation process
+	//Timer3 is in charge of keeping track of time remaining for the fermentation process 
 	TCCR3A = (1 << WGM32); // Enables Timer3 to run in CTC mode
 	OCR3A = 62500; // Number of ticks required to have timer keep track of time in seconds
 	TCCR3A 	= (0 << COM3A1) | (0 << COM3A0); //Sets normal port operation, OC3A disconnected
@@ -21,5 +21,5 @@ void init_TH()
 
 void disable_TH()
 {
-	TCCR1B = (0 << CS12) | (0 << CS11) | (0 << CS10); //Sets clock source to none effectively disabling timer1
+	TCCR3B = (0 << CS32) | (0 << CS31) | (0 << CS30); //Sets clock source to none effectively disabling timer1
 }
