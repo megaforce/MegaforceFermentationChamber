@@ -31,7 +31,7 @@ int main(void)
     }
 }
 
-ISR(TIMER1_COMPA_vect)
+ISR(TIMER3_COMPA_vect)
 {
 	
 	if(days -1 != 0)
