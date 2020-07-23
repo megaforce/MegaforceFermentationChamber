@@ -24,6 +24,6 @@ void startConversion()
 
 void disable_ADC()
 {
-	ADCSRA &= 0x7F;
-	DIDR0 &= 0xFE;
+	ADCSRA &= 0x7F; //Set ADEN to 0
+	DIDR0 &= 0xFE; // Disable ADC0 with mask so other ADC's stay intact
 }
