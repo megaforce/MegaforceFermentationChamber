@@ -6,7 +6,7 @@
  */ 
 #include "TimeHandler.h"
 #include "MMINIT.H"
-#include <AVR/io.h>
+#include "Globals.h"
 
 void init_TH()
 {

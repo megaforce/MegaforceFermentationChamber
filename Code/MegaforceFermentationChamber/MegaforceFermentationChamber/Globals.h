@@ -4,6 +4,7 @@
  * Created: 21.7.2020 16:18:28
  *  Author: megaforce
  */ 
+#include <avr/io.h>
 
 #ifndef Globals_H_
 #define Globals_H_

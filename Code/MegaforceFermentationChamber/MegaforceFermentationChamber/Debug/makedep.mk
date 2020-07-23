@@ -12,6 +12,8 @@ main.c
 
 MMINIT.c
 
+PWMHandler.c
+
 systime.c
 
 TimeHandler.c

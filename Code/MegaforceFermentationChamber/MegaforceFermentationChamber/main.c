@@ -5,9 +5,10 @@
  * Author : Megaforce
  */ 
 
-#include <avr/io.h>
 #include "MMINIT.h"
 #include "TimeHandler.h"
+#include "ADCHandler.h"
+#include "PWMHandler.h"
 #include "Globals.h"
 
 int main(void)
@@ -22,6 +23,7 @@ int main(void)
 	init_TH();
 	LCD_Init();
 	init_ADC();
+	init_PWM();
 	fermentationScreen();
 	
     while (1) 
@@ -39,6 +41,7 @@ ISR(TIMER3_COMPA_vect)
 	{
 		disable_TH();
 		disable_ADC();
+		disable_PWM();
 		main();
 	}
 		days --;		
@@ -47,5 +50,17 @@ ISR(TIMER3_COMPA_vect)
 ISR(ADC_vect)
 {
 	ADC_res = ADC;
+	if(ADC_res > 512)
+	{
+		LED1_Off();
+		LED2_On();
+		OCR1A = 0xFFFF;
+	}
+	else
+	{
+		OCR1A = 0;
+		LED1_On();
+		LED2_Off();
+	}
 	startConversion();
 }

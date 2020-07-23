@@ -135,6 +135,9 @@
     <Compile Include="MMINIT.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="PWMHandler.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="systime.c">
       <SubType>compile</SubType>
     </Compile>

@@ -15,7 +15,7 @@ void init_IO()
 	DDRD &= 0xC3;
 	
 	PORTE=0;
-	DDRE=0x0F;	
+	DDRE=0x0F;		
 }
 
 void LED1_On()

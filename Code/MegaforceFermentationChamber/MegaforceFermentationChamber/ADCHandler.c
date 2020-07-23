@@ -4,7 +4,6 @@
  * Created: 21. 07. 2020 10:42:43
  *  Author: Megaforce
  */ 
-#include <avr/io.h>
 #include "ADCHandler.h"
 #include "Globals.h"
 
