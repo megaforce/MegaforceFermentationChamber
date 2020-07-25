@@ -11,4 +11,6 @@
 void init_TH(); 
 void disable_TH();
 
+void convertToRealTime();
+
 #endif /* TimeHandler_H_ */

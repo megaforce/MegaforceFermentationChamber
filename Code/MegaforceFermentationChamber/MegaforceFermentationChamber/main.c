@@ -35,7 +35,7 @@ int main(void)
 ISR(TIMER3_COMPA_vect)
 {
 	
-	if(days -1 != 0)
+	if(globalTime -1 != 0)
 		fermentationScreen();
 	else
 	{
@@ -44,7 +44,7 @@ ISR(TIMER3_COMPA_vect)
 		disable_PWM();
 		main();
 	}
-		days --;		
+		globalTime --;		
 }
 
 ISR(ADC_vect)

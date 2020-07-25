@@ -153,7 +153,9 @@ void mainScreenTemp()
 			break;
 			
 			case 3:
+				convertToRealTime();
 				return;
+				
 			break;
 			
 			case 4:
@@ -174,18 +176,46 @@ void fermentationScreen()
 {	
 	char text[20];
 	
-	sprintf(text,"Days: %d",days);
+	long tmp = globalTime;		
+	
+	sprintf(text,"Days: %d",(tmp/(86400))); //Days
 	UG_SetForecolor(C_WHITE);
-	UG_PutString(35,145,text);
+	UG_PutString(35,145,text);	
+	
+	tmp = tmp % (86400); //Hours
+	memset(text, 0, sizeof text);
+	
+	sprintf(text,"Hours: %d",(tmp/ 3600));
+	UG_SetForecolor(C_WHITE);
+	UG_PutString(60,165,text);	
+	
+	tmp = tmp % 3600; //Mins	
+		
+	memset(text, 0, sizeof text);
+	
+	sprintf(text,"Mins: %d",(tmp/ 60));
+	UG_SetForecolor(C_WHITE);
+	UG_PutString(85,185,text);
+	
+	tmp = tmp % 60; //Sec
+	memset(text, 0, sizeof text);
+	
+	sprintf(text,"Sec: %d",tmp);
+	UG_SetForecolor(C_WHITE);
+	UG_PutString(110,205,text);
+	memset(text, 0, sizeof text);
+	
 
 	sprintf(text,"Temp: %d",temp);
 	UG_SetForecolor(C_WHITE);
-	UG_PutString(35,185,text);
+	UG_PutString(55,0,text);
+	memset(text, 0, sizeof text);
 	
-	sprintf(text,"Temp: %d",ADC_res);
+	sprintf(text,"Temp ADC: %d",ADC_res);
 	UG_SetForecolor(C_WHITE);
-	UG_PutString(35,225,text);
-	
+	UG_PutString(75,30,text);
+	memset(text, 0, sizeof text);
+		
 	return;
 	
 }

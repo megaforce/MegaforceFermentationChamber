@@ -12,6 +12,7 @@
 short days;
 short temp;
 
+long globalTime;
 int ADC_res;
 
 #endif /* Globals_H_ */

@@ -13,4 +13,5 @@
 void init_ADC();
 void startConversion();
 void disable_ADC();
+
 #endif /* ADCHandler_H_ */
