@@ -13,7 +13,7 @@ void init_ADC()
 	ADCSRA |= (1 << ADEN) ; //Enable ADC
 	ADCSRA |= (1 << ADIE) ; //Enable ADC interrupt 
 	ADCSRA |= (1 << ADPS0) | (1 << ADPS1) | (1 << ADPS2); //Set prescaler to /128
-	DIDR0 |= (1 << ADC0D); //Enable ADC0
+	DIDR0 |= (1 << ADC0D) ; //Enable ADC0
 	startConversion();
 }
 

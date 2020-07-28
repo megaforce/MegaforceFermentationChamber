@@ -10,5 +10,9 @@
 #define  PWMHandler_H_
 
 void init_PWM();
+void init_PWM_CH1();
+void init_PWM_CH2();
 void disable_PWM();
+void init_PWM_IO();
+
 #endif /* PWMHandler_H_ */

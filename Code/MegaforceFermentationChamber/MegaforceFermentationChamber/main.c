@@ -32,7 +32,7 @@ int main(void)
     }
 }
 
-ISR(TIMER3_COMPA_vect)
+ISR(TIMER1_COMPA_vect)
 {
 	
 	if(globalTime -1 != 0)
@@ -50,17 +50,17 @@ ISR(TIMER3_COMPA_vect)
 ISR(ADC_vect)
 {
 	ADC_res = ADC;
-	if(ADC_res > 512)
-	{
-		LED1_Off();
-		LED2_On();
-		OCR1A = 0xFFFF;
+	if(ADC_res >= 512)
+	{		
+		OCR4A=0;
+		OCR3A = 1000;		
+		
 	}
-	else
-	{
-		OCR1A = 0;
-		LED1_On();
-		LED2_Off();
+	if (ADC_res < 512)
+	{	
+		OCR4A=500;	
+		OCR3A=0;	
 	}
+	
 	startConversion();
 }

@@ -10,7 +10,7 @@
 int tmp = 0;
 
 void init_IO()
-{
+{	
 	PORTD |= 0x3C;
 	DDRD &= 0xC3;
 	
