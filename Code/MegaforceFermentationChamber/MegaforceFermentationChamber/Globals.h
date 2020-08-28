@@ -14,5 +14,7 @@ short temp;
 
 long globalTime;
 int ADC_res;
+float Conv_ADC;
+int ADC_temp;
 
 #endif /* Globals_H_ */

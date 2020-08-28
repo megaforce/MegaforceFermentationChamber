@@ -9,7 +9,97 @@
 #include "MMINIT.h"
 #include "ADCHandler.h"
 
+void GuiTemplate()
+{
+	UG_FontSelect(&RFONT_8X12);
+	UG_SetForecolor(C_GREEN);
+	UG_SetBackcolor(C_BLACK);
+	
+	UG_PutString(30,50,"OK - Confirm");
+	UG_PutString(30,70,"A - Increase");
+	UG_PutString(30,90,"B - Decrease");
+	UG_PutString(30,110,"ESC - Reset");
+	
+	UG_DrawLine(30,140,130,140,C_WHITE);
+	UG_DrawLine(30,160,130,160,C_WHITE);
+	UG_DrawLine(30,140,30,160,C_WHITE);
+	UG_DrawLine(130,140,130,160,C_WHITE);
 
+	UG_DrawLine(30,180,130,180,C_WHITE);
+	UG_DrawLine(30,200,130,200,C_WHITE);
+	UG_DrawLine(30,180,30,200,C_WHITE);
+	UG_DrawLine(130,180,130,200,C_WHITE);
+	
+	/* ALES*/
+	//Body
+	UG_DrawLine(150,150,150,200,C_WHITE);
+	UG_DrawLine(180,150,180,200,C_WHITE);
+	UG_DrawLine(150,200,180,200,C_WHITE);
+	//Handle
+	UG_DrawLine(180,160,190,160,C_WHITE);
+	UG_DrawLine(190,160,190,180,C_WHITE);
+	UG_DrawLine(180,180,190,180,C_WHITE);
+	
+	UG_FontSelect(&RFONT_8X12);
+	UG_SetForecolor(C_GREEN);
+	UG_SetBackcolor(C_BLACK);
+	UG_PutString(200,155,"ALES");
+	UG_SetForecolor(C_WHITE);
+	UG_PutString(200,170,"TEMP: 18-22");
+	UG_PutString(200,185,"TIME: 12 - 28");
+	
+	
+	/* Lagers*/
+	//Body
+	UG_DrawLine(150,90,150,140,C_WHITE);
+	UG_DrawLine(180,90,180,140,C_WHITE);
+	UG_DrawLine(150,140,180,140,C_WHITE);
+	//Handle
+	UG_DrawLine(180,100,190,100,C_WHITE);
+	UG_DrawLine(190,100,190,120,C_WHITE);
+	UG_DrawLine(180,120,190,120,C_WHITE);
+	
+	UG_FontSelect(&RFONT_8X12);
+	UG_SetForecolor(C_GREEN);
+	UG_SetBackcolor(C_BLACK);
+	UG_PutString(200,95,"LAGERS");
+	UG_SetForecolor(C_WHITE);
+	UG_PutString(200,110,"TEMP: 8-12");
+	UG_PutString(200,125,"TIME: 21 - 28");
+	
+	
+	/* Stouts*/
+	//Body
+	UG_DrawLine(150,30,150,80,C_WHITE);
+	UG_DrawLine(180,30,180,80,C_WHITE);
+	UG_DrawLine(150,80,180,80,C_WHITE);
+	//Handle
+	UG_DrawLine(180,40,190,40,C_WHITE);
+	UG_DrawLine(190,40,190,60,C_WHITE);
+	UG_DrawLine(180,60,190,60,C_WHITE);
+	
+	UG_FontSelect(&RFONT_8X12);
+	UG_SetForecolor(C_GREEN);
+	UG_SetBackcolor(C_BLACK);
+	UG_PutString(200,35,"STOUTS/PORTERS");
+	UG_SetForecolor(C_WHITE);
+	UG_PutString(200,50,"TEMP: 18-22");
+	UG_PutString(200,65,"TIME: 14 - 21");
+	
+	//Beer
+	for (int i = 0; i < 170; i++)
+	{	
+		if(199 - i > 160)
+			UG_DrawLine(179,199-i,151,199-i,C_SANDY_BROWN);
+		if(199 - i < 140 && 199 - i > 100)
+			UG_DrawLine(179,199-i,151,199-i,C_GOLDEN_ROD);
+		if (199 -i < 161 && 199 - i > 150 || 199 -i < 101 && 199 - i > 90 || 199 -i < 41 && 199 - i > 30)
+			UG_DrawLine(179,199-i,151,199-i,C_WHITE);	
+		
+	}
+	
+	
+}
 void startUp()
 {
 	LCD_Init();
@@ -48,25 +138,8 @@ void startUp()
 void mainScreenTime()
 {	
 	LCD_Init();	
-		
-	UG_FontSelect(&RFONT_8X12);
-	UG_SetForecolor(C_GREEN);
-	UG_SetBackcolor(C_BLACK);
 	
-	UG_PutString(30,50,"OK - Confirm");
-	UG_PutString(30,70,"A - Increase");
-	UG_PutString(30,90,"B - Decrease");
-	UG_PutString(30,110,"ESC - Reset");
-	
-	UG_DrawLine(30,140,130,140,C_WHITE);
-	UG_DrawLine(30,160,130,160,C_WHITE);
-	UG_DrawLine(30,140,30,160,C_WHITE);
-	UG_DrawLine(130,140,130,160,C_WHITE);
-
-	UG_DrawLine(30,180,130,180,C_WHITE);
-	UG_DrawLine(30,200,130,200,C_WHITE);
-	UG_DrawLine(30,180,30,200,C_WHITE);
-	UG_DrawLine(130,180,130,200,C_WHITE);	
+	GuiTemplate();
 	
 	char text[20];
 	
@@ -111,24 +184,7 @@ void mainScreenTemp()
 {	
 	LCD_Init();
 	
-	UG_FontSelect(&RFONT_8X12);
-	UG_SetForecolor(C_GREEN);
-	UG_SetBackcolor(C_BLACK);
-	
-	UG_PutString(30,50,"OK - Confirm");
-	UG_PutString(30,70,"A - Increase");
-	UG_PutString(30,90,"B - Decrease");
-	UG_PutString(30,110,"ESC - Reset");
-	
-	UG_DrawLine(30,180,130,180,C_WHITE);
-	UG_DrawLine(30,200,130,200,C_WHITE);
-	UG_DrawLine(30,180,30,200,C_WHITE);
-	UG_DrawLine(130,180,130,200,C_WHITE);
-	
-	UG_DrawLine(30,140,130,140,C_WHITE);
-	UG_DrawLine(30,160,130,160,C_WHITE);
-	UG_DrawLine(30,140,30,160,C_WHITE);
-	UG_DrawLine(130,140,130,160,C_WHITE);
+	GuiTemplate();
 	
 	char text[20];	
 	
@@ -187,7 +243,7 @@ void fermentationScreen()
 	
 	sprintf(text,"Hours: %d",(tmp/ 3600));
 	UG_SetForecolor(C_WHITE);
-	UG_PutString(60,165,text);	
+	UG_PutString(35,165,text);	
 	
 	tmp = tmp % 3600; //Mins	
 		
@@ -195,25 +251,25 @@ void fermentationScreen()
 	
 	sprintf(text,"Mins: %d",(tmp/ 60));
 	UG_SetForecolor(C_WHITE);
-	UG_PutString(85,185,text);
+	UG_PutString(35,185,text);
 	
 	tmp = tmp % 60; //Sec
 	memset(text, 0, sizeof text);
 	
 	sprintf(text,"Sec: %d",tmp);
 	UG_SetForecolor(C_WHITE);
-	UG_PutString(110,205,text);
+	UG_PutString(35,205,text);
 	memset(text, 0, sizeof text);
 	
 
 	sprintf(text,"Temp: %d",temp);
 	UG_SetForecolor(C_WHITE);
-	UG_PutString(55,0,text);
+	UG_PutString(35,10,text);
 	memset(text, 0, sizeof text);
 	
-	sprintf(text,"Temp ADC: %d",ADC_res);
+	sprintf(text,"Temp ADC: %d",ADC_temp);
 	UG_SetForecolor(C_WHITE);
-	UG_PutString(75,30,text);
+	UG_PutString(35,40,text);
 	memset(text, 0, sizeof text);
 		
 	return;

@@ -18,5 +18,6 @@ void startUp();
 void mainScreenTime();
 void mainScreenTemp();
 void fermentationScreen();
+void GuiTemplate();
 
 #endif /* GuiHandler_H_ */

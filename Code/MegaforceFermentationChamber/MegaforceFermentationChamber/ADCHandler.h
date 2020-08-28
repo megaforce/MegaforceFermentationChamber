@@ -13,5 +13,6 @@
 void init_ADC();
 void startConversion();
 void disable_ADC();
+void ConvertToTemp();
 
 #endif /* ADCHandler_H_ */

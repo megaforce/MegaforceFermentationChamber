@@ -27,3 +27,10 @@ void disable_ADC()
 	ADCSRA &= 0x7F; //Set ADEN to 0
 	DIDR0 &= 0xFE; // Disable ADC0 with mask so other ADC's stay intact
 }
+
+void ConvertToTemp()
+{
+	Conv_ADC = (ADC_res * 3.3 ) / 1023; // Converts 0-1023 to 0-3.3V
+	Conv_ADC = Conv_ADC * 10;
+	ADC_temp = Conv_ADC;
+}
