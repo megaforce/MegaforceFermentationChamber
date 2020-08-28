@@ -111,7 +111,11 @@ void startUp()
 	UG_PutString(30,50,"MEGAFORCE");
 	UG_PutString(30,70,"FERMENTATOR");
 	UG_PutString(30,90,"CHAMBER");
-	
+	UG_FontSelect(&RFONT_8X12);
+	UG_PutString(135,130,"MADE FOR OME");
+	UG_PutString(135,145,"-FE 2nd. year");
+	UG_PutString(135,160,"DESIGNED FOR USE");
+	UG_PutString(135,175," WITH MISKO 2");
 	_delay_ms(50);
 	//Body
 	UG_DrawLine(30,140,30,220,C_WHITE);
@@ -125,13 +129,14 @@ void startUp()
 	for (int i = 0; i < 70; i++)
 		{
 			UG_DrawLine(31,219-i,89,219-i,C_SANDY_BROWN);
-			_delay_ms(500);
+			_delay_ms(700);
 		}
 	for (int i = 0; i < 10; i++)
 		{
 			UG_DrawLine(31,150-i,89,150-i,C_LAVENDER);
-			_delay_ms(500);
+			_delay_ms(700);
 		}
+		
 	
 	
 }
@@ -236,14 +241,14 @@ void fermentationScreen()
 	
 	sprintf(text,"Days: %d",(tmp/(86400))); //Days
 	UG_SetForecolor(C_WHITE);
-	UG_PutString(35,145,text);	
+	UG_PutString(35,70,text);	
 	
 	tmp = tmp % (86400); //Hours
 	memset(text, 0, sizeof text);
 	
 	sprintf(text,"Hours: %d",(tmp/ 3600));
 	UG_SetForecolor(C_WHITE);
-	UG_PutString(35,165,text);	
+	UG_PutString(35,100,text);	
 	
 	tmp = tmp % 3600; //Mins	
 		
@@ -251,27 +256,44 @@ void fermentationScreen()
 	
 	sprintf(text,"Mins: %d",(tmp/ 60));
 	UG_SetForecolor(C_WHITE);
-	UG_PutString(35,185,text);
+	UG_PutString(35,130,text);
 	
 	tmp = tmp % 60; //Sec
 	memset(text, 0, sizeof text);
 	
 	sprintf(text,"Sec: %d",tmp);
 	UG_SetForecolor(C_WHITE);
-	UG_PutString(35,205,text);
+	UG_PutString(35,160,text);
 	memset(text, 0, sizeof text);
 	
 
-	sprintf(text,"Temp: %d",temp);
+	sprintf(text,"TARGET TEMPERATURE: %d",temp);
 	UG_SetForecolor(C_WHITE);
 	UG_PutString(35,10,text);
 	memset(text, 0, sizeof text);
 	
-	sprintf(text,"Temp ADC: %d",ADC_temp);
+	sprintf(text,"FERMENTATION TEMPERATURE: %d",ADC_temp);
 	UG_SetForecolor(C_WHITE);
 	UG_PutString(35,40,text);
 	memset(text, 0, sizeof text);
 		
+	UG_FontSelect(&RFONT_8X12);
+	UG_SetForecolor(C_GREEN);
+	UG_SetBackcolor(C_BLACK);
+	
+	UG_PutString(170,70,"Don't worry ");
+	UG_PutString(170,85,"about your beer!");
+	UG_PutString(170,100,"MISKO is taking ");
+	UG_PutString(170,115,"care of it!");
+	UG_PutString(170,130,"Crack open");
+	UG_PutString(170,145,"a cold one");
+	UG_PutString(170,160,"while waiting!");
+	
+	UG_FontSelect(&RFONT_8X12);
+	UG_SetForecolor(C_RED);
+	UG_SetBackcolor(C_BLACK);	
+	UG_PutString(35,200,"DO NOT OPEN THE CHAMBER IF NOT NECESSARY!");
+	
 	return;
 	
 }
